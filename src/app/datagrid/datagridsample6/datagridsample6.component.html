@@ -3,18 +3,28 @@
 <dx-data-grid
   id="dataGrid"
   [dataSource]="employees"
-  [allowColumnResizing]="true"
-  [columnAutoWidth]="true"
-  [allowColumnReordering]="true"
-  (onExporting)="exportGrid($event)">
-  keyExpr="EmployeeID"
+  [focusedRowEnabled]="true"
+  [focusedRowIndex]="0"
+  [focusedColumnIndex]="0"
+  (onExporting)="exportGrid($event)"
+  (onCellPrepared)="onCellPrepared($event)"
+  keyExpr="EmployeeID">
 >
-  <dxi-column dataField="FullName">
+  <dxo-paging [pageSize]="5"></dxo-paging>
+  <dxo-pager
+    [showPageSizeSelector]="true"
+    [allowedPageSizes]="[3, 4, 5, 8]"
+  ></dxo-pager>
+  <dxi-column
+    dataField="FullName"
+    caption="Name"
+    headerCellTemplate="nameHeaderTemplate">
   </dxi-column>
   <dxi-column dataField="City"></dxi-column>
   <dxi-column
     dataField="Country"
     sortOrder="asc"
+    [customizeText]="countryColumn_customizeText"
   >
   </dxi-column>
   <dxi-column dataField="Address"></dxi-column>
@@ -23,6 +33,12 @@
     [fixed]="true"
   >
   </dxi-column>
+
+  <div *dxTemplate="let info of 'nameHeaderTemplate'">
+    <p style="font-size:16px; color: red; font-weight: bold;">
+      {{info.column.caption}}
+    </p>
+  </div>
 
   <dxo-export
     [enabled]="true"

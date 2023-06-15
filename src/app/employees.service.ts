@@ -81,7 +81,7 @@ const employees: Employee[] = [{
     "City": "Redmond",
     "Region": "WA",
     "PostalCode": "98052",
-    "Country": "USA",
+    "Country": "GR",
     "HomePhone": "(206) 555-8122",
     "Extension": "5176",
     "Photo": "https://js.devexpress.com/Demos/WidgetsGallery/JSDemos/images/employees/04.png",

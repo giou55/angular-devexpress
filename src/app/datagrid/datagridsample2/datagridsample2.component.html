@@ -2,10 +2,11 @@
 
 <dx-data-grid
   id="dataGrid1"
+  [dataSource]="employees"
   [allowColumnResizing]="true"
   [columnAutoWidth]="true"
   [allowColumnReordering]="true"
-  [dataSource]="employees"
+  [showColumnHeaders]="false"
   keyExpr="EmployeeID"
 >
   <dxi-column dataField="BirthDate"> </dxi-column>

@@ -8,7 +8,7 @@ import {
   DxBulletModule,
   DxTemplateModule,
 } from 'devextreme-angular';
-import { Workbook } from 'exceljs';
+//import { Workbook } from 'exceljs';
 import saveAs from 'file-saver';
 import { exportDataGrid } from 'devextreme/excel_exporter';
 import { exportDataGrid as exportDataGridToPdf } from 'devextreme/pdf_exporter';
@@ -30,27 +30,33 @@ if (!/localhost/.test(document.location.host)) {
 export class Datagridsample6Component {
   //dataSource: DataSource;
   employees: Employee[] = [];
-
   collapsed = false;
 
-  exportGrid(e:any) {
-    if (e.format === 'xlsx') {
-        const workbook = new Workbook();
-        const worksheet = workbook.addWorksheet("Main sheet");
-        exportDataGrid({
-            worksheet: worksheet,
-            component: e.component,
-        }).then(function() {
-            workbook.xlsx.writeBuffer().then(function(buffer) {
-                saveAs(
-                  new Blob([buffer],
-                  { type: "application/octet-stream" }),
-                  "DataGrid.xlsx"
-                );
-            });
-        });
+  constructor(service: Service, employeesService: EmployeesService) {
+    //this.dataSource = service.getDataSource();
+    this.employees = employeesService.getEmployees();
+  }
+
+  countryColumn_customizeText (cellInfo:any) {
+    if(cellInfo.value == "GR"){
+      return "Greece";
+    } else {
+      return cellInfo.value;
     }
-    else if (e.format === 'pdf') {
+  }
+
+  onCellPrepared (e:any) {
+    if (e.rowType === "data") {
+        if (e.column.dataField === "Country" && e.data.Country === "GR") {
+            e.cellElement.style.cssText = "color: white; background-color: red";
+            // or
+            e.cellElement.classList.add("my-class");
+        }
+    }
+  }
+
+  exportGrid(e:any) {
+    if (e.format === 'pdf') {
         const doc = new jsPDF();
         exportDataGridToPdf({
             jsPDFDocument: doc,
@@ -61,10 +67,6 @@ export class Datagridsample6Component {
     }
   }
 
-  constructor(service: Service, employeesService: EmployeesService) {
-    //this.dataSource = service.getDataSource();
-    this.employees = employeesService.getEmployees();
-  }
 }
 
 
