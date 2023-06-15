@@ -17,12 +17,12 @@ if (!/localhost/.test(document.location.host)) {
 }
 
 @Component({
-  selector: 'datagridsample2',
-  templateUrl: 'datagridsample2.component.html',
-  styleUrls: ['datagridsample2.component.css'],
+  selector: 'datagridsample3',
+  templateUrl: 'datagridsample3.component.html',
+  styleUrls: ['datagridsample3.component.css'],
   providers: [Service],
 })
-export class Datagridsample2Component {
+export class Datagridsample3Component {
   //dataSource: DataSource;
   employees: Employee[] = [];
 
@@ -44,6 +44,7 @@ export class Datagridsample2Component {
     this.employees = employeesService.getEmployees();
   }
 }
+
 
 
 

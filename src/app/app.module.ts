@@ -8,6 +8,7 @@ import { Datagridsample1Component } from './datagrid/datagridsample1/datagridsam
 import { HomeComponent } from './home/home.component';
 import { Datagridsample2Component } from './datagrid/datagridsample2/datagridsample2.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { Datagridsample3Component } from './datagrid/datagridsample3/datagridsample3.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     Datagridsample1Component,
     HomeComponent,
     Datagridsample2Component,
-    NavbarComponent
+    NavbarComponent,
+    Datagridsample3Component
   ],
   imports: [
     BrowserModule,
