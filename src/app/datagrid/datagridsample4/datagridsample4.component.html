@@ -1,0 +1,50 @@
+<h2>DataGrid 4</h2>
+
+<dx-data-grid
+  id="dataGrid"
+  [dataSource]="employees"
+  [allowColumnResizing]="true"
+  [columnAutoWidth]="true"
+  [allowColumnReordering]="true"
+
+  keyExpr="EmployeeID"
+>
+  <dxi-column
+    dataField="FullName"
+    [groupIndex]="0"
+  >
+  </dxi-column>
+  <dxi-column dataField="City"></dxi-column>
+  <dxi-column
+    dataField="Country"
+    sortOrder="asc"
+  >
+  </dxi-column>
+  <dxi-column dataField="Address"></dxi-column>
+  <dxi-column
+    dataField="Photo"
+    [fixed]="true"
+  >
+  </dxi-column>
+  <dxo-group-panel [visible]="true"></dxo-group-panel>
+
+  <dxo-grouping [autoExpandAll]="expanded"></dxo-grouping>
+
+  <dxo-toolbar>
+    <dxi-item name="groupPanel"></dxi-item>
+    <dxi-item location="after">
+        <dx-button
+            [text]="expanded ? 'Collapse All' : 'Expand All'"
+            [width]="136"
+            (onClick)="expanded = !expanded">
+        </dx-button>
+    </dxi-item>
+    <dxi-item name="addRowButton" showText="always"></dxi-item>
+    <dxi-item name="exportButton"></dxi-item>
+    <dxi-item name="columnChooserButton"></dxi-item>
+    <dxi-item name="searchPanel"></dxi-item>
+  </dxo-toolbar>
+</dx-data-grid>
+
+
+

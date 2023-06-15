@@ -1,4 +1,10 @@
-#dataGrid {
-  height: 500px;
+#dataGrid1 {
+  height: 200px;
+  background-color: lemonchiffon;
+}
+
+#dataGrid2 {
+  height: 150px;
+  margin-top: 20px;
   background-color: lemonchiffon;
 }

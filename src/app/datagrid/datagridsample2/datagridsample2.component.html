@@ -1,5 +1,7 @@
+<h2>DataGrid 2</h2>
+
 <dx-data-grid
-  id="dataGrid"
+  id="dataGrid1"
   [allowColumnResizing]="true"
   [columnAutoWidth]="true"
   [allowColumnReordering]="true"
@@ -18,7 +20,30 @@
   <dxi-column dataField="Address"></dxi-column>
   <dxi-column
     dataField="Photo"
-    columnFixingEnabled="true"
+    >
+  </dxi-column>
+  <dxi-column dataField="Photo"></dxi-column>
+</dx-data-grid>
+
+<dx-data-grid
+  id="dataGrid2"
+  [allowColumnResizing]="true"
+  [columnAutoWidth]="true"
+  [allowColumnReordering]="true"
+  [dataSource]="employees"
+  keyExpr="EmployeeID"
+>
+  <dxi-column dataField="BirthDate"> </dxi-column>
+  <dxi-column
+    dataField="BirthDate"
+    dataType="date"
+    [width]="120">
+  >
+  </dxi-column>
+  <dxi-column dataField="Country"></dxi-column>
+  <dxi-column dataField="FullName"></dxi-column>
+  <dxi-column
+    dataField="Photo"
     >
   </dxi-column>
   <dxi-column dataField="Photo"></dxi-column>

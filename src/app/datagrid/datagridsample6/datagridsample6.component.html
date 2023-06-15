@@ -1,4 +1,4 @@
-<h2>DataGrid 3</h2>
+<h2>DataGrid 6</h2>
 
 <dx-data-grid
   id="dataGrid"
@@ -6,11 +6,9 @@
   [allowColumnResizing]="true"
   [columnAutoWidth]="true"
   [allowColumnReordering]="true"
+  (onExporting)="exportGrid($event)">
   keyExpr="EmployeeID"
 >
-  <dxo-filter-row [visible]="true"></dxo-filter-row>
-  <dxo-search-panel [visible]="true"></dxo-search-panel>
-
   <dxi-column dataField="FullName">
   </dxi-column>
   <dxi-column dataField="City"></dxi-column>
@@ -25,6 +23,13 @@
     [fixed]="true"
   >
   </dxi-column>
+
+  <dxo-export
+    [enabled]="true"
+    [formats]="['xlsx', 'pdf']"
+  >
+  </dxo-export>
 </dx-data-grid>
+
 
 
